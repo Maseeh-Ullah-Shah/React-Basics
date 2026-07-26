@@ -1,19 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const App = () => {
-
-let [count , setCount] = useState("Uzma Nasir");
-console.log(count);
-
   return (
     <div>
-      <h1>Name - {count}</h1>
-      <button
-       onClick={()=>{
-      setCount("Alina");
+      <h1 bg-red-50>Hello React..........</h1>
+      <button onClick={()=>{
+
       }}
-       >
-        Change Name -</button>
+      >
+        Hide Text</button>
     </div>
   )
 }
