@@ -1,36 +1,21 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useContext, useState } from 'react'
+import Home from './components/Home'
+import About from './components/About'
+import Contact from "./components/Contact"
+import { MyStore } from './context/MyContext'
 const App = () => {
-  const [user, setUser] = useState([]);
-  const [value, setValue] = useState("")
-  async function GithubProfile() {
-    const response = await fetch("https://fakestoreapi.com/products/");
-    let data = await response.json();
-    console.log(data);
-    setUser(data);
+  const {count,setCount} = useContext(MyStore);
 
-  }
-  useEffect(() => {
-    GithubProfile();
-  }, []);
-  // GithubProfile()
+  console.log("App rendering.......");
   return (
     <div>
-      <h1>GitHub User :----</h1>
-      <input
-      value={value}
-       onChange={(e)=>setValue(e.target.value.toUpperCase())} type="text" name="" id="" />
-      <div className="flex flex-wrap gap-4">
-
-        {
-          user.map((elem)=><img
-        className="w-30 h-20 object-cover rounded-lg"
-        src={elem.image} alt="" />)
-        }
-        
-      </div>
+      <h1>Hello Count is -{count}</h1>
+      <button onClick={()=>setCount(count+1)}>Increment</button>
+      <Home />
+      <About />
+      <Contact />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
